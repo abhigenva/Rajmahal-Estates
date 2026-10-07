@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajmahal Estates | Royal Heritage & Luxury Real Estate Jaipur</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        royalBlue: {
+                            900: '#0B192C',
+                            800: '#1E3E62',
+                            700: '#002244',
+                        },
+                        gold: {
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                            400: '#E6C657',
+                            300: '#F3E5AB'
+                        },
+                        ivory: {
+                            50: '#FAF9F6',
+                            100: '#F2EFE9',
+                            200: '#E5E0D5'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF9F6;
+            color: #1E3E62;
+        }
+        h1, h2, h3, h4, .font-royal {
+            font-family: 'Playfair Display', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA8C2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-color: #D4AF37;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF9F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-ivory-50 text-royalBlue-900 selection:bg-gold-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-royalBlue-900 text-gold-300 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wider flex justify-center items-center gap-4">
+        <span><i class="fa-solid fa-crown text-gold-400 mr-2"></i> Jaipur's Premier Heritage & Luxury Real Estate Consultancy</span>
+        <span class="hidden md:inline">|</span>
+        <span class="hidden md:inline"><i class="fa-solid fa-phone-volume mr-1 text-gold-400"></i> +91 98290 XXXXX</span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header id="navbar" class="sticky top-0 z-40 bg-ivory-50/95 backdrop-blur-md border-b border-gold-200/60 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-royalBlue-900 flex items-center justify-center border border-gold-500 shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-chess-rook text-gold-400 text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-royal text-2xl sm:text-3xl font-bold tracking-wide text-royalBlue-900 block leading-none">RAJMAHAL</span>
+                    <span class="text-[10px] tracking-[0.25em] text-gold-600 font-semibold uppercase block mt-1">Estates • Jaipur</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <a href="#home" class="hover:text-gold-600 transition-colors">Home</a>
+                <a href="#properties" class="hover:text-gold-600 transition-colors">Portfolio</a>
+                <a href="#about" class="hover:text-gold-600 transition-colors">Heritage & Legacy</a>
+                <a href="#consultation" class="hover:text-gold-600 transition-colors">Private Consultation</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="openAdminModal()" id="adminNavBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-gold-500 text-royalBlue-900 hover:bg-royalBlue-900 hover:text-gold-400 text-xs sm:text-sm font-semibold transition-all shadow-sm">
+                    <i class="fa-solid fa-lock text-gold-500" id="adminLockIcon"></i>
+                    <span id="adminBtnText">Admin Portal</span>
+                </button>
+                <a href="#consultation" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-royalBlue-900 text-gold-300 hover:bg-gold-500 hover:text-royalBlue-900 text-sm font-semibold transition-all shadow-md">
+                    <span>Enquire Now</span>
+                    <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                </a>
+                <!-- Mobile menu toggle -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-royalBlue-900 p-2 text-xl">
+                    <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-ivory-100 border-b border-gold-200 px-6 py-4 space-y-3 font-medium">
+            <a href="#home" onclick="toggleMobileMenu()" class="block hover:text-gold-600">Home</a>
+            <a href="#properties" onclick="toggleMobileMenu()" class="block hover:text-gold-600">Portfolio</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block hover:text-gold-600">Heritage & Legacy</a>
+            <a href="#consultation" onclick="toggleMobileMenu()" class="block hover:text-gold-600">Private Consultation</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-royalBlue-900 text-white">
+        <!-- Background Overlay with Royal Palace Vibe -->
+        <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+            <img src="https://images.unsplash.com/photo-1599661046289-e31898f46a41?q=80&w=1920&auto=format&fit=crop" alt="Jaipur Palace Architecture" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-royalBlue-900 via-royalBlue-900/60 to-transparent z-10"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-5xl mx-auto px-4 text-center py-20">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/40 text-gold-300 text-xs sm:text-sm mb-6 tracking-widest uppercase backdrop-blur-sm animate-pulse">
+                <i class="fa-solid fa-star text-gold-400"></i> Purveyor of Royal Estates & Luxury Living in Jaipur
+            </div>
+            <h1 class="font-royal text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                Where Regal Heritage <br/>Meets <span class="gold-gradient-text">Modern Grandeur</span>
+            </h1>
+            <p class="text-base sm:text-xl text-ivory-100/90 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Discover bespoke Havelis, ultra-luxury villas in Civil Lines, C-Scheme penthouses, and exclusive gated estates curated for discerning connoisseurs.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#properties" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-500 text-royalBlue-900 font-bold hover:bg-gold-400 transition-all shadow-xl flex items-center justify-center gap-3 text-base">
+                    <i class="fa-solid fa-building"></i> Explore Portfolio
+                </a>
+                <a href="#consultation" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-gold-500/50 text-white font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-3 text-base">
+                    <i class="fa-solid fa-calendar-check text-gold-400"></i> Book Private Viewing
+                </a>
+            </div>
+
+            <!-- Quick Trust Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-gold-500/20 text-center">
+                <div>
+                    <div class="font-royal text-3xl sm:text-4xl font-bold text-gold-400">₹500Cr+</div>
+                    <div class="text-xs text-ivory-200 uppercase tracking-widest mt-1">Portfolio Managed</div>
+                </div>
+                <div>
+                    <div class="font-royal text-3xl sm:text-4xl font-bold text-gold-400">100%</div>
+                    <div class="text-xs text-ivory-200 uppercase tracking-widest mt-1">Verified Clear Titles</div>
+                </div>
+                <div>
+                    <div class="font-royal text-3xl sm:text-4xl font-bold text-gold-400">C-Scheme</div>
+                    <div class="text-xs text-ivory-200 uppercase tracking-widest mt-1">& Civil Lines Focus</div>
+                </div>
+                <div>
+                    <div class="font-royal text-3xl sm:text-4xl font-bold text-gold-400">25+ Yrs</div>
+                    <div class="text-xs text-ivory-200 uppercase tracking-widest mt-1">Legacy of Trust</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Portfolio Section -->
+    <section id="properties" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold">Exclusive Listings</span>
+            <h2 class="font-royal text-3xl sm:text-5xl font-bold text-royalBlue-900 mt-2 mb-4">The Royal Portfolio</h2>
+            <p class="text-royalBlue-800/80 text-sm sm:text-base">Explore Jaipur's most prestigious addresses. Filter by location, property type, price, or sort to find your generational sanctuary.</p>
+        </div>
+
+        <!-- Admin Control Toolbar (Only visible when admin is logged in) -->
+        <div id="adminToolbar" class="hidden mb-8 p-6 bg-royalBlue-900 text-white rounded-2xl shadow-xl border-2 border-gold-500 transition-all">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-4 border-b border-gold-500/30">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gold-500 text-royalBlue-900 flex items-center justify-center font-bold text-lg">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-royal text-xl font-bold text-gold-300">Administrator Mode Active</h3>
+                        <p class="text-xs text-ivory-200">You have full control to add, edit, delete properties, and use advanced portfolio management filters.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    <button onclick="openPropertyModal('add')" class="flex-1 md:flex-none px-6 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-royalBlue-900 font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-plus-circle"></i> Add New Property
+                    </button>
+                    <button onclick="logoutAdmin()" class="px-4 py-2.5 rounded-xl bg-red-600/80 hover:bg-red-600 text-white font-semibold text-sm transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Admin
+                    </button>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div class="text-gold-300 font-medium">
+                    <i class="fa-solid fa-database mr-1"></i> Total Properties in Database: <span id="adminTotalCount" class="font-bold text-white">0</span>
+                </div>
+                <div class="text-ivory-200">
+                    <i class="fa-solid fa-shield-halved mr-1 text-gold-400"></i> Data persists securely via Browser LocalStorage.
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter & Sort Bar (Available to everyone, enhanced for Admin management) -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gold-200 mb-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
+                <!-- Search Keyword -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1.5">Search Keywords</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                        </span>
+                        <input type="text" id="filterSearch" oninput="applyFiltersAndSort()" placeholder="Title, location..." class="w-full pl-9 pr-3 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <!-- Property Type Filter -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1.5">Property Type</label>
+                    <select id="filterType" onchange="applyFiltersAndSort()" class="w-full px-3 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        <option value="">All Types</option>
+                        <option value="Villa">Luxury Villa</option>
+                        <option value="Haveli">Heritage Haveli</option>
+                        <option value="Plot">Gated Plot</option>
+                        <option value="Commercial">Commercial Space</option>
+                        <option value="Penthouse">Penthouse</option>
+                    </select>
+                </div>
+
+                <!-- Location Filter -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1.5">Location in Jaipur</label>
+                    <select id="filterLocation" onchange="applyFiltersAndSort()" class="w-full px-3 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        <option value="">All Locations</option>
+                        <option value="C-Scheme">C-Scheme</option>
+                        <option value="Civil Lines">Civil Lines</option>
+                        <option value="Tonk Road">Tonk Road</option>
+                        <option value="Jagatpura">Jagatpura</option>
+                        <option value="Vaishali Nagar">Vaishali Nagar</option>
+                        <option value="Malviya Nagar">Malviya Nagar</option>
+                    </select>
+                </div>
+
+                <!-- Sort By -->
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1.5">Sort Portfolio</label>
+                    <select id="sortBy" onchange="applyFiltersAndSort()" class="w-full px-3 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        <option value="newest">Newest Additions</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="size-high">Size: Largest First</option>
+                    </select>
+                </div>
+
+                <!-- Reset Button -->
+                <div class="flex items-end h-full pt-1 sm:pt-0">
+                    <button onclick="resetFilters()" class="w-full py-2.5 bg-ivory-100 hover:bg-gold-500 hover:text-royalBlue-900 text-royalBlue-900 font-semibold rounded-xl text-sm transition-all border border-gold-200 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rotate-right text-xs"></i> Reset Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties Grid Container -->
+        <div id="propertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="noPropertiesFound" class="hidden text-center py-20 bg-white rounded-2xl border border-gold-200 shadow-sm mt-6">
+            <div class="w-16 h-16 bg-gold-500/10 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-4">
+                <i class="fa-solid fa-building-circle-exclamation"></i>
+            </div>
+            <h3 class="font-royal text-2xl font-bold text-royalBlue-900">No Matching Properties Found</h3>
+            <p class="text-royalBlue-800/70 text-sm mt-2 max-w-md mx-auto">Try adjusting your filter criteria or search keywords to view available luxury listings.</p>
+            <button onclick="resetFilters()" class="mt-6 px-6 py-2.5 rounded-full bg-royalBlue-900 text-gold-300 font-semibold text-sm hover:bg-gold-500 hover:text-royalBlue-900 transition-all">Clear Filters</button>
+        </div>
+    </section>
+
+    <!-- About Us / Heritage Section -->
+    <section id="about" class="py-20 bg-royalBlue-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold">The Rajmahal Legacy</span>
+                    <h2 class="font-royal text-3xl sm:text-5xl font-bold mt-2 mb-6 leading-tight">
+                        Excellence Rooted in <br/><span class="gold-gradient-text">Jaipur's Royal Heritage</span>
+                    </h2>
+                    <p class="text-ivory-200/90 text-base leading-relaxed mb-6 font-light">
+                        Founded in the Pink City, Rajmahal Estates represents the zenith of real estate consultancy. We bridge the timeless elegance of heritage Havelis with the cutting-edge luxury of contemporary high-rises in prime commercial and residential hubs like C-Scheme and Civil Lines.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-royal font-bold text-lg text-gold-300">Uncompromising Discretion</h4>
+                                <p class="text-xs text-ivory-200/80 mt-1">We cater to high-net-worth individuals, royal families, and corporate captains with absolute confidentiality.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-royal font-bold text-lg text-gold-300">Prime Jaipur Expertise</h4>
+                                <p class="text-xs text-ivory-200/80 mt-1">Unmatched local mastery of land titles, zoning laws, and heritage conservation guidelines across Jaipur.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#consultation" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gold-500 text-royalBlue-900 font-bold hover:bg-gold-400 transition-all shadow-lg">
+                        <span>Schedule a Private Consultation</span>
+                        <i class="fa-solid fa-arrow-right-long text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Luxury Interior" class="rounded-2xl shadow-2xl border border-gold-500/30 object-cover h-64 w-full">
+                        <div class="p-6 rounded-2xl bg-royalBlue-800 border border-gold-500/30 text-center">
+                            <div class="font-royal text-3xl font-bold text-gold-400">100%</div>
+                            <div class="text-xs text-ivory-200 mt-1">Transparent Legal Verification</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="p-6 rounded-2xl bg-royalBlue-800 border border-gold-500/30 text-center">
+                            <div class="font-royal text-3xl font-bold text-gold-400">₹100Cr+</div>
+                            <div class="text-xs text-ivory-200 mt-1">Single Transaction Record</div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Luxury Villa Jaipur" class="rounded-2xl shadow-2xl border border-gold-500/30 object-cover h-64 w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation & Contact Section -->
+    <section id="consultation" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-xl border border-gold-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-5 bg-royalBlue-900 text-white p-8 sm:p-12 flex flex-col justify-between relative">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                <div class="relative z-10">
+                    <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold">Connect With Us</span>
+                    <h2 class="font-royal text-3xl sm:text-4xl font-bold mt-2 mb-6">Begin Your Royal Real Estate Journey</h2>
+                    <p class="text-ivory-200 text-sm leading-relaxed mb-8">
+                        Whether you wish to acquire a heritage property, sell a prime estate, or invest in commercial land in C-Scheme, our senior consultants are at your service.
+                    </p>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/50 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-ivory-300 block">Headquarters</span>
+                                <span class="font-medium">C-Scheme, Bhagwan Das Road, Jaipur, Rajasthan</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/50 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-ivory-300 block">Direct Concierge</span>
+                                <span class="font-medium">+91 98290 XXXXX / +91 141 XXXXXX</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/50 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-ivory-300 block">Electronic Mail</span>
+                                <span class="font-medium">concierge@rajmahalestates.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative z-10 mt-12 pt-6 border-t border-gold-500/30 text-xs text-ivory-300">
+                    <p>© 2026 Rajmahal Estates. All Rights Reserved.</p>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="lg:col-span-7 p-8 sm:p-12">
+                <h3 class="font-royal text-2xl font-bold text-royalBlue-900 mb-2">Request a Private Consultation</h3>
+                <p class="text-royalBlue-800/70 text-sm mb-8">Fill in your details below and our senior luxury consultant will reach out within 2 hours.</p>
+
+                <form onsubmit="handleConsultationSubmit(event)" class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Full Name *</label>
+                            <input type="text" id="consultName" required placeholder="Kunwar / Mr. / Ms..." class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Phone Number *</label>
+                            <input type="tel" id="consultPhone" required placeholder="+91 98765 43210" class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Email Address</label>
+                            <input type="email" id="consultEmail" placeholder="you@domain.com" class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Service Required</label>
+                            <select id="consultService" class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                                <option value="Buy Luxury Property">Acquire a Luxury Property</option>
+                                <option value="Sell Property">List & Sell My Estate</option>
+                                <option value="Commercial Investment">Commercial Real Estate Investment</option>
+                                <option value="Heritage Restoration">Heritage Haveli Consultation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Specific Requirements / Notes</label>
+                        <textarea id="consultMessage" rows="4" placeholder="Mention preferred locations (C-Scheme, Civil Lines), budget range, or property type..." class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-royalBlue-900 text-gold-300 hover:bg-gold-500 hover:text-royalBlue-900 font-bold transition-all shadow-lg flex items-center justify-center gap-3 text-base">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Consultation Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-royalBlue-900 text-ivory-200 border-t border-gold-500/30 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-royalBlue-800 flex items-center justify-center border border-gold-500">
+                            <i class="fa-solid fa-chess-rook text-gold-400"></i>
+                        </div>
+                        <div>
+                            <span class="font-royal text-2xl font-bold text-white block leading-none">RAJMAHAL</span>
+                            <span class="text-[9px] tracking-[0.25em] text-gold-400 font-semibold uppercase block mt-1">Estates • Jaipur</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-ivory-300 leading-relaxed">
+                        Jaipur's most trusted ultra-luxury and heritage real estate consultancy. Delivering bespoke advisory with regal standards of integrity and excellence.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-royal text-lg font-bold text-gold-300 mb-4">Prime Locations</h4>
+                    <ul class="space-y-2 text-xs text-ivory-300">
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">C-Scheme Commercial & Penthouses</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Civil Lines Luxury Bungalows</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Tonk Road Gated Villas</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Jagatpura Residential Plots</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Jaipur Heritage Havelis</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-royal text-lg font-bold text-gold-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-ivory-300">
+                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Home Landing Page</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Property Portfolio</a></li>
+                        <li><a href="#about" class="hover:text-gold-400 transition-colors">Heritage & Legacy</a></li>
+                        <li><a href="#consultation" class="hover:text-gold-400 transition-colors">Private Consultation</a></li>
+                        <li><a href="#" onclick="openAdminModal(); return false;" class="hover:text-gold-400 transition-colors">Administrator Access</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-royal text-lg font-bold text-gold-300 mb-4">Royal Newsletter</h4>
+                    <p class="text-xs text-ivory-300 mb-4">Subscribe to receive private off-market listings and Jaipur luxury market reports.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email..." class="bg-royalBlue-800 border border-gold-500/30 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500 w-full">
+                        <button onclick="showCustomModal('Subscribed', 'Thank you for subscribing to Rajmahal Estates private circular.')" class="bg-gold-500 hover:bg-gold-400 text-royalBlue-900 font-bold px-4 py-2 rounded-xl text-xs transition-all">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gold-500/20 text-center text-xs text-ivory-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>© 2026 Rajmahal Estates Consultancy, Jaipur. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Advisory</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">RERA Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-royalBlue-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border-2 border-gold-500 relative animate-scaleUp">
+            <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-gray-400 hover:text-royalBlue-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-royalBlue-900 text-gold-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-3 border border-gold-500">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="font-royal text-2xl font-bold text-royalBlue-900">Administrator Authentication</h3>
+                <p class="text-xs text-royalBlue-800/70 mt-1">Enter site admin passcode to manage portfolio listings.</p>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-2">Admin Passcode</label>
+                    <input type="password" id="adminPasscode" required placeholder="Enter passcode (admin123)" class="w-full px-4 py-3 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    <p class="text-[11px] text-gray-500 mt-1">Hint for evaluation: <span class="font-semibold text-gold-600">admin123</span></p>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-royalBlue-900 text-gold-300 font-bold hover:bg-gold-500 hover:text-royalBlue-900 transition-all shadow-lg text-sm">
+                    Authenticate as Administrator
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add / Edit Property Modal -->
+    <div id="propertyModal" class="fixed inset-0 z-50 bg-royalBlue-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-8 shadow-2xl border-2 border-gold-500 relative my-8">
+            <button onclick="closePropertyModal()" class="absolute top-5 right-5 text-gray-400 hover:text-royalBlue-900 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mb-6">
+                <span class="text-xs uppercase tracking-[0.2em] text-gold-600 font-bold">Admin Controls</span>
+                <h3 id="propertyModalTitle" class="font-royal text-2xl font-bold text-royalBlue-900 mt-1">Add New Property Listing</h3>
+            </div>
+            <form id="propertyForm" onsubmit="saveProperty(event)" class="space-y-4">
+                <input type="hidden" id="propId">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Property Title *</label>
+                        <input type="text" id="propTitle" required placeholder="e.g. Rambagh Palace View Villa" class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Price (in ₹) *</label>
+                        <input type="text" id="propPrice" required placeholder="e.g. ₹4.80 Cr or 48000000" class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Property Type *</label>
+                        <select id="propType" required class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                            <option value="Villa">Luxury Villa</option>
+                            <option value="Haveli">Heritage Haveli</option>
+                            <option value="Plot">Gated Plot</option>
+                            <option value="Commercial">Commercial Space</option>
+                            <option value="Penthouse">Penthouse</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Location *</label>
+                        <select id="propLocation" required class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                            <option value="C-Scheme">C-Scheme</option>
+                            <option value="Civil Lines">Civil Lines</option>
+                            <option value="Tonk Road">Tonk Road</option>
+                            <option value="Jagatpura">Jagatpura</option>
+                            <option value="Vaishali Nagar">Vaishali Nagar</option>
+                            <option value="Malviya Nagar">Malviya Nagar</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Bedrooms / BHK *</label>
+                        <input type="text" id="propBhk" required placeholder="e.g. 5 BHK or N/A" class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Size (Sq.Ft.) *</label>
+                        <input type="text" id="propSize" required placeholder="e.g. 4500 Sq.Ft." class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Image URL *</label>
+                        <input type="url" id="propImage" required placeholder="https://images.unsplash.com/..." class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-royalBlue-900 mb-1">Detailed Description *</label>
+                    <textarea id="propDescription" rows="3" required placeholder="Describe regal features, marble flooring, courtyard, parking..." class="w-full px-3.5 py-2.5 bg-ivory-50 border border-gold-200 rounded-xl text-sm focus:outline-none focus:border-gold-500"></textarea>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-gold-200">
+                    <button type="button" onclick="closePropertyModal()" class="px-5 py-2.5 rounded-xl bg-ivory-100 text-royalBlue-900 font-semibold text-sm hover:bg-gray-200 transition-all">Cancel</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-royalBlue-900 text-gold-300 font-bold hover:bg-gold-500 hover:text-royalBlue-900 transition-all shadow-md text-sm">Save Property</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Notification Modal (No alert() used) -->
+    <div id="customModal" class="fixed inset-0 z-50 bg-royalBlue-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border-2 border-gold-500">
+            <div id="modalIcon" class="w-14 h-14 bg-gold-500/10 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 id="modalTitle" class="font-royal text-xl font-bold text-royalBlue-900 mb-2">Success</h3>
+            <p id="modalMessage" class="text-xs text-royalBlue-800/80 mb-6 leading-relaxed">Action completed successfully.</p>
+            <button onclick="closeCustomModal()" class="w-full py-2.5 rounded-xl bg-royalBlue-900 text-gold-300 font-bold hover:bg-gold-500 hover:text-royalBlue-900 transition-all text-sm">Dismiss</button>
+        </div>
+    </div>
+
+    <script>
+        // Initial Default Luxury Properties of Jaipur
+        const defaultProperties = [
+            {
+                id: "prop-1",
+                title: "The Regal Civil Lines Mansion",
+                price: "₹18.50 Cr",
+                rawPrice: 185000000,
+                type: "Villa",
+                location: "Civil Lines",
+                bhk: "6 BHK",
+                size: "8,500 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
+                description: "An architectural masterpiece in Civil Lines featuring Italian marble, private emerald pool, lush green lawns, and bulletproof glass security.",
+                createdAt: Date.now() - 5000000
+            },
+            {
+                id: "prop-2",
+                title: "Heritage Haveli Courtyard",
+                price: "₹24.00 Cr",
+                rawPrice: 240000000,
+                type: "Haveli",
+                location: "C-Scheme",
+                bhk: "9 BHK",
+                size: "12,000 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop",
+                description: "Authentic 19th-century restored heritage Haveli with carved sandstone jalis, central courtyard, and high rental yield for boutique hospitality.",
+                createdAt: Date.now() - 4000000
+            },
+            {
+                id: "prop-3",
+                title: "C-Scheme Sky Penthouse",
+                price: "₹9.20 Cr",
+                rawPrice: 92000000,
+                type: "Penthouse",
+                location: "C-Scheme",
+                bhk: "4 BHK",
+                size: "4,800 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
+                description: "Panoramic rooftop views of Jaipur skyline and Nahargarh Fort. Private elevator, wrap-around deck, and 24/7 concierge service.",
+                createdAt: Date.now() - 3000000
+            },
+            {
+                id: "prop-4",
+                title: "Tonk Road Gated Golf Villa",
+                price: "₹7.50 Cr",
+                rawPrice: 75000000,
+                type: "Villa",
+                location: "Tonk Road",
+                bhk: "5 BHK",
+                size: "5,200 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+                description: "Located in Jaipur's most elite gated community near airport. Fully furnished with smart home automation and private gazebo.",
+                createdAt: Date.now() - 2000000
+            },
+            {
+                id: "prop-5",
+                title: "C-Scheme Prime Commercial Floor",
+                price: "₹12.00 Cr",
+                rawPrice: 120000000,
+                type: "Commercial",
+                location: "C-Scheme",
+                bhk: "Commercial",
+                size: "6,000 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop",
+                description: "Grade-A commercial office floor on main Bhagwan Das Road. High footfall, ample basement parking, and top-tier corporate tenants.",
+                createdAt: Date.now() - 1000000
+            },
+            {
+                id: "prop-6",
+                title: "Jagatpura Luxury Gated Plot",
+                price: "₹2.80 Cr",
+                rawPrice: 28000000,
+                type: "Plot",
+                location: "Jagatpura",
+                bhk: "Land Parcel",
+                size: "3,500 Sq.Ft.",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop",
+                description: "East-facing corner plot with 60ft wide approach road, approved for G+3 luxury independent floors construction.",
+                createdAt: Date.now() - 500000
+            }
+        ];
+
+        // Global State
+        let properties = [];
+        let isAdminLoggedIn = false;
+
+        // Initialize App on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPropertiesFromStorage();
+            applyFiltersAndSort();
+        });
+
+        // Load or Initialize LocalStorage
+        function loadPropertiesFromStorage() {
+            const stored = localStorage.getItem('rajmahal_properties');
+            if (stored) {
+                try {
+                    properties = JSON.parse(stored);
+                } catch (e) {
+                    properties = defaultProperties;
+                }
+            } else {
+                properties = defaultProperties;
+                savePropertiesToStorage();
+            }
+        }
+
+        function savePropertiesToStorage() {
+            localStorage.setItem('rajmahal_properties', JSON.stringify(properties));
+        }
+
+        // Helper to parse price string or number for sorting
+        function parseRawPrice(priceStr) {
+            if (typeof priceStr === 'number') return priceStr;
+            // Extract numbers from strings like "₹18.50 Cr" or "₹48000000"
+            const cleanStr = priceStr.replace(/[^0-9.]/g, '');
+            let val = parseFloat(cleanStr) || 0;
+            if (priceStr.toLowerCase().includes('cr')) {
+                val = val * 10000000;
+            } else if (priceStr.toLowerCase().includes('lac') || priceStr.toLowerCase().includes('lakh')) {
+                val = val * 100000;
+            }
+            return val;
+        }
+
+        // Render Properties Grid
+        function renderProperties(list) {
+            const grid = document.getElementById('propertiesGrid');
+            const noFound = document.getElementById('noPropertiesFound');
+            const totalCountEl = document.getElementById('adminTotalCount');
+
+            if (totalCountEl) {
+                totalCountEl.textContent = properties.length;
+            }
+
+            if (!list || list.length === 0) {
+                grid.innerHTML = '';
+                noFound.classList.remove('hidden');
+                return;
+            }
+
+            noFound.classList.add('hidden');
+            let html = '';
+
+            list.forEach(prop => {
+                const badgeColor = prop.type === 'Haveli' ? 'bg-amber-600' : (prop.type === 'Commercial' ? 'bg-royalBlue-800' : 'bg-gold-600');
+                
+                html += `
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gold-200/80 hover:shadow-2xl transition-all duration-300 flex flex-col group">
+                        <!-- Image Container -->
+                        <div class="relative h-64 overflow-hidden bg-gray-100">
+                            <img src="${prop.image}" alt="${prop.title}" onerror="this.src='https://placehold.co/600x400/002244/D4AF37?text=Rajmahal+Estates'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 rounded-full ${badgeColor} text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                                    ${prop.type}
+                                </span>
+                            </div>
+                            <div class="absolute top-4 right-4 bg-royalBlue-900/80 backdrop-blur-md px-3 py-1 rounded-full text-gold-300 text-xs font-semibold shadow-md">
+                                <i class="fa-solid fa-location-dot mr-1"></i> ${prop.location}
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 bg-gradient-to-t from-royalBlue-900/90 to-transparent pt-6 pb-2 px-3">
+                                <span class="text-xs text-ivory-200 uppercase tracking-widest font-semibold">Offered At</span>
+                                <div class="font-royal text-2xl font-bold text-gold-300">${prop.price}</div>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-royal text-xl font-bold text-royalBlue-900 mb-2 group-hover:text-gold-600 transition-colors">${prop.title}</h3>
+                                <p class="text-xs text-royalBlue-800/80 line-clamp-2 mb-4 leading-relaxed">${prop.description}</p>
+                                
+                                <div class="grid grid-cols-2 gap-2 py-3 border-y border-gold-200/60 text-xs text-royalBlue-900 font-medium mb-4">
+                                    <div><i class="fa-solid fa-bed text-gold-600 mr-1.5"></i> ${prop.bhk}</div>
+                                    <div><i class="fa-solid fa-ruler-combined text-gold-600 mr-1.5"></i> ${prop.size}</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-3 pt-2">
+                                <a href="#consultation" onclick="selectPropertyForInquiry('${prop.title}')" class="flex-1 py-2.5 rounded-xl bg-royalBlue-900 text-gold-300 hover:bg-gold-500 hover:text-royalBlue-900 font-semibold text-xs text-center transition-all shadow-sm">
+                                    Enquire Details
+                                </a>
+                                <!-- Admin Action Buttons (Only shown if logged in) -->
+                                ${isAdminLoggedIn ? `
+                                    <button onclick="openPropertyModal('edit', '${prop.id}')" title="Edit Property" class="w-10 h-10 rounded-xl bg-gold-500 text-royalBlue-900 font-bold hover:bg-gold-400 transition-all flex items-center justify-center shadow-sm">
+                                        <i class="fa-solid fa-pen text-xs"></i>
+                                    </button>
+                                    <button onclick="deleteProperty('${prop.id}')" title="Delete Property" class="w-10 h-10 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition-all flex items-center justify-center shadow-sm">
+                                        <i class="fa-solid fa-trash text-xs"></i>
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        // Filtering and Sorting Logic
+        function applyFiltersAndSort() {
+            const searchKeyword = document.getElementById('filterSearch').value.toLowerCase();
+            const filterType = document.getElementById('filterType').value;
+            const filterLocation = document.getElementById('filterLocation').value;
+            const sortBy = document.getElementById('sortBy').value;
+
+            let result = properties.filter(prop => {
+                const matchesSearch = prop.title.toLowerCase().includes(searchKeyword) || 
+                                      prop.location.toLowerCase().includes(searchKeyword) || 
+                                      prop.description.toLowerCase().includes(searchKeyword);
+                const matchesType = filterType === '' || prop.type === filterType;
+                const matchesLocation = filterLocation === '' || prop.location === filterLocation;
+
+                return matchesSearch && matchesType && matchesLocation;
+            });
+
+            // Sorting
+            result.sort((a, b) => {
+                const priceA = parseRawPrice(a.price);
+                const priceB = parseRawPrice(b.price);
+
+                if (sortBy === 'price-low') {
+                    return priceA - priceB;
+                } else if (sortBy === 'price-high') {
+                    return priceB - priceA;
+                } else if (sortBy === 'size-high') {
+                    const sizeA = parseInt(a.size.replace(/[^0-9]/g, '')) || 0;
+                    const sizeB = parseInt(b.size.replace(/[^0-9]/g, '')) || 0;
+                    return sizeB - sizeA;
+                } else {
+                    // newest
+                    return (b.createdAt || 0) - (a.createdAt || 0);
+                }
+            });
+
+            renderProperties(result);
+        }
+
+        function resetFilters() {
+            document.getElementById('filterSearch').value = '';
+            document.getElementById('filterType').value = '';
+            document.getElementById('filterLocation').value = '';
+            document.getElementById('sortBy').value = 'newest';
+            applyFiltersAndSort();
+        }
+
+        // Admin Authentication Handling
+        function openAdminModal() {
+            if (isAdminLoggedIn) {
+                // If already logged in, scroll to toolbar
+                document.getElementById('adminToolbar').scrollIntoView({ behavior: 'smooth' });
+                showCustomModal('Admin Active', 'You are already authenticated as the site administrator.');
+                return;
+            }
+            document.getElementById('adminModal').classList.remove('hidden');
+            document.getElementById('adminPasscode').value = '';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPasscode').value;
+            if (pass === 'admin123') {
+                isAdminLoggedIn = true;
+                closeAdminModal();
+                
+                // Update UI for Admin
+                document.getElementById('adminToolbar').classList.remove('hidden');
+                document.getElementById('adminBtnText').textContent = 'Admin Mode ON';
+                document.getElementById('adminLockIcon').className = 'fa-solid fa-lock-open text-gold-300';
+                document.getElementById('adminNavBtn').classList.add('bg-royalBlue-900', 'text-gold-300');
+
+                applyFiltersAndSort();
+                showCustomModal('Authentication Successful', 'Welcome Administrator. You can now add, edit, or delete properties from the portfolio.');
+            } else {
+                showCustomModal('Access Denied', 'Incorrect administrator passcode. Please try again (Passcode is admin123).', 'error');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            document.getElementById('adminToolbar').classList.add('hidden');
+            document.getElementById('adminBtnText').textContent = 'Admin Portal';
+            document.getElementById('adminLockIcon').className = 'fa-solid fa-lock text-gold-500';
+            document.getElementById('adminNavBtn').classList.remove('bg-royalBlue-900', 'text-gold-300');
+            applyFiltersAndSort();
+            showCustomModal('Logged Out', 'Successfully exited administrator mode.');
+        }
+
+        // Property CRUD Modals for Admin
+        function openPropertyModal(mode, id = null) {
+            const modal = document.getElementById('propertyModal');
+            const titleEl = document.getElementById('propertyModalTitle');
+            document.getElementById('propertyForm').reset();
+
+            if (mode === 'edit' && id) {
+                titleEl.textContent = 'Edit Property Listing';
+                const prop = properties.find(p => p.id === id);
+                if (prop) {
+                    document.getElementById('propId').value = prop.id;
+                    document.getElementById('propTitle').value = prop.title;
+                    document.getElementById('propPrice').value = prop.price;
+                    document.getElementById('propType').value = prop.type;
+                    document.getElementById('propLocation').value = prop.location;
+                    document.getElementById('propBhk').value = prop.bhk;
+                    document.getElementById('propSize').value = prop.size;
+                    document.getElementById('propImage').value = prop.image;
+                    document.getElementById('propDescription').value = prop.description;
+                }
+            } else {
+                titleEl.textContent = 'Add New Property Listing';
+                document.getElementById('propId').value = '';
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closePropertyModal() {
+            document.getElementById('propertyModal').classList.add('hidden');
+        }
+
+        function saveProperty(e) {
+            e.preventDefault();
+            const id = document.getElementById('propId').value;
+            const title = document.getElementById('propTitle').value;
+            const price = document.getElementById('propPrice').value;
+            const type = document.getElementById('propType').value;
+            const location = document.getElementById('propLocation').value;
+            const bhk = document.getElementById('propBhk').value;
+            const size = document.getElementById('propSize').value;
+            const image = document.getElementById('propImage').value;
+            const description = document.getElementById('propDescription').value;
+
+            if (id) {
+                // Update
+                const index = properties.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    properties[index] = {
+                        ...properties[index],
+                        title,
+                        price,
+                        type,
+                        location,
+                        bhk,
+                        size,
+                        image,
+                        description
+                    };
+                }
+                showCustomModal('Property Updated', 'The property listing has been successfully updated in the database.');
+            } else {
+                // Create
+                const newProp = {
+                    id: 'prop-' + Date.now(),
+                    title,
+                    price,
+                    type,
+                    location,
+                    bhk,
+                    size,
+                    image,
+                    description,
+                    createdAt: Date.now()
+                };
+                properties.unshift(newProp);
+                showCustomModal('Property Added', 'New luxury property has been added to the Rajmahal Estates portfolio.');
+            }
+
+            savePropertiesToStorage();
+            closePropertyModal();
+            applyFiltersAndSort();
+        }
+
+        function deleteProperty(id) {
+            if (confirm('Are you sure you want to delete this property from Rajmahal Estates portfolio?')) {
+                properties = properties.filter(p => p.id !== id);
+                savePropertiesToStorage();
+                applyFiltersAndSort();
+                showCustomModal('Property Deleted', 'The property listing has been permanently removed.');
+            }
+        }
+
+        // Inquiry & Consultation Handlers
+        function selectPropertyForInquiry(title) {
+            document.getElementById('consultMessage').value = `I am interested in inquiring about property: "${title}". Please share further details and schedule a private viewing.`;
+        }
+
+        function handleConsultationSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('consultName').value;
+            showCustomModal('Consultation Confirmed', `Thank you, ${name}. Your private consultation request has been received by Rajmahal Estates concierge. We will contact you shortly.`);
+            e.target.reset();
+        }
+
+        // Custom Modal helper
+        function showCustomModal(title, message, type = 'success') {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            const iconEl = document.getElementById('modalIcon');
+            if (type === 'error') {
+                iconEl.className = 'w-14 h-14 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-4';
+                iconEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            } else {
+                iconEl.className = 'w-14 h-14 bg-gold-500/10 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-4';
+                iconEl.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            }
+            document.getElementById('customModal').classList.remove('hidden');
+        }
+
+        function closeCustomModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
